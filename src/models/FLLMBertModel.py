@@ -1,24 +1,10 @@
 # from flautim.pytorch.Model import Model
 from torch import nn
-import torch.nn.functional as F
 from transformers import DistilBertModel
 from peft import LoraConfig, TaskType, get_peft_model
+from src.models.AttentionPooling import AttentionPooling
 
-
-
-class AttentionPooling(nn.Module):
-    def __init__(self, embed_dim):
-        super().__init__()
-        self.attn = nn.Linear(embed_dim, 1)
-
-    def forward(self, x):
-        attn_scores = self.attn(x)
-        attn_weights = F.softmax(attn_scores, dim=1)
-        pooled = (attn_weights * x).sum(dim=1)
-        return pooled
-
-
-class FLLMModel(nn.Module):
+class FLLMBertModel(nn.Module):
     def __init__(self, context, output_size, tokenizer, hidden_dims=[128, 64], use_lora=True, **kwargs):
         kwargs.pop("name", None)
         super().__init__()
