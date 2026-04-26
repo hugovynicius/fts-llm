@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
-import FLLMDataset
+from src.dataset.FLLMDataset import FLLMDataset
 
 from clshq_tk.modules.fuzzy import GridPartitioner, trimf, training_loop
 from clshq_tk.data.regression import RegressionTS

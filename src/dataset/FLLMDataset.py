@@ -6,8 +6,6 @@ import copy
 class FLLMDataset(Dataset):
 
     def __init__(self, input_ids, attention_mask, labels, **kwargs):
-        # super(FLLMDataset, self).__init__(name = "FLLM", **kwargs)
-
         self.input_ids = input_ids
         self.attention_mask = attention_mask
         self.labels = labels
